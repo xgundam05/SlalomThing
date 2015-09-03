@@ -11,7 +11,6 @@ public class Vehicle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
 	}
 
 	// Update is called once per frame
@@ -20,8 +19,8 @@ public class Vehicle : MonoBehaviour {
 
 		if (steering != 0){
 			this.sideV = Mathf.Lerp(this.sideV,
-															this.maxSideV * Mathf.Sign(steering),
-															Time.deltaTime * this.sideAcc);
+			                        this.maxSideV * Mathf.Sign(steering),
+			                        Time.deltaTime * this.sideAcc);
 		}
 		else {
 			this.sideV = Mathf.Lerp(this.sideV, 0, Time.deltaTime * this.sideAcc);

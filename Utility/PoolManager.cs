@@ -8,7 +8,7 @@ public class PoolManager : MonoBehaviour {
 	private const int DEFAULT_CAPACITY = 100;
 
 	// Pool table -- Terrible Pun, but I couldn't resist >.>
-	private Dictionary<Type, Pool<object>> _pools;
+	private Dictionary<Type, object> _pools;
 
 	// Instance Member
 	private static PoolManager _current;
@@ -40,12 +40,12 @@ public class PoolManager : MonoBehaviour {
 
 	public Pool<T> Pools<T>() where T : class, new() {
 		if (this._pools == null)
-			this._pools = new Dictionary<Type, Pool<object>>();
+			this._pools = new Dictionary<Type, object>();
 
 		Type key = typeof(T);
 		if (!this._pools.ContainsKey(key)){
 			Pool<T> tmp = new Pool<T>(DEFAULT_CAPACITY);
-			this._pools.Add(key, (tmp as Pool<object>));
+			this._pools.Add(key, tmp);
 		}
 
 		return this._pools[key] as Pool<T>;
